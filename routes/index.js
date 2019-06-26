@@ -8,7 +8,17 @@ router.get('/', (req, res) => {
   // res.send('Hey! It works!');
   // res.json(kevin);
   // res.send(req.query.name);
-  res.json(req.query);
+  // res.json(req.query);
+  res.render('hello', {
+    name: 'Kevin',
+    dog: req.query.dog,
+    title: 'I Love food',
+  });
+});
+
+router.get('/reverse/:name', (req, res) => {
+  const reverse = [...req.params.name].reverse().join('');
+  res.send(reverse);
 });
 
 module.exports = router;
